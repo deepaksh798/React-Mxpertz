@@ -1,33 +1,31 @@
-import React from 'react'
-import {Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
-    console.log("we are in the navbar component");
   return (
-<>
-        <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-          <div className='container-fluid'>
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link" to="/new">
-                  New
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/inprogress">
-                  In Progress
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/complete">
-                  Complete
-                </Link>
-              </li> 
-            </ul>
-          </div>
-        </nav>
-</>    
-  )
+    <nav className="bg-transparent p-4 shadow-md">
+      <div className="container mx-auto flex justify-center items-center space-x-4">
+        <Link
+          className="px-4 py-2 text-white border border-transparent bg-gray-700 hover:text-white rounded-lg transition duration-300"
+          to="/new"
+        >
+          New
+        </Link>
+        <Link
+          className="px-4 py-2 text-white border border-transparent bg-gray-700 hover:text-white rounded-lg transition duration-300"
+          to="/inprogress"
+        >
+          In Progress
+        </Link>
+        <Link
+          className="px-4 py-2 text-white border border-transparent bg-gray-700 hover:text-white rounded-lg transition duration-300"
+          to="/complete"
+        >
+          Complete
+        </Link>
+      </div>
+    </nav>
+  );
 }
 
-export default Navbar
+export default Navbar;

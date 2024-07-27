@@ -1,35 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-function InProgress({result}) {
-
-  const [progressData, setProgressData] = useState([])
-  console.log("we are in the InProgress",result);
-
-  useEffect(() => {
-    console.log("useEffect");
-    const data = result.filter(item => item.Status === "In Progress")
-    setProgressData(data)
-  }, [])
-  
+function InProgress({inProgressStatus, updateStatus}) {  
 
   return (
     <>
-    <div className="columns-3">
-      {progressData.map(result => (
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-5" key={result.id}>
-              <img className="rounded-t-lg" src="https://img.freepik.com/free-vector/404-error-web-template-flat-style_23-2147781022.jpg?t=st=1721637360~exp=1721640960~hmac=673d53e167cb5c72b5edb14862bd50e3a61cb88d8219b4450971e3889ef68395&w=826" alt="" />
-          <div className="p-5" >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{result.Title}</h5>
-                  
-              <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  {result.Status} 
-              </a>
+        <h1 className="text-2xl font-bold mb-4">In Progress</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {inProgressStatus.map((task,index) => (
+          <div className="bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700" key={index}>
+            <a href="#">
+              <img className="rounded-t-lg w-full" src="https://img.freepik.com/free-vector/audiobook-concept-illustration_114360-7084.jpg?w=826&t=st=1721734587~exp=1721735187~hmac=722f8807e150a20f5651225e4f84052c11653ecc3ed5565fe003945d3334c321" alt="" />
+            </a>
+            <div className="p-4">
+              <h5 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{task.Title}</h5>
+              <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={() => updateStatus(task._id,'complete')}
+            >
+              Status: {task.Status}
+            </button>
+            </div>
           </div>
+        ))}
       </div>
-      ))}
-  </div>
-    
-   
     </>
   )
 }
